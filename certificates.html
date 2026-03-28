@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates Portfolio | Opeyemi Benjamin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .filter-container {
+            margin: 3rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.6rem 1.5rem;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(47, 129, 247, 0.05);
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cert-card-sub {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+        }
+
+        .cert-card-sub:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 5px 20px rgba(47, 129, 247, 0.1);
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .cert-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cert-provider {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .view-btn {
+            display: inline-block;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .back-nav {
+            padding: 2rem 10%;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="back-nav">
+        <a href="index.html" style="color: var(--text-secondary); font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+
+    <section style="padding-top: 20px;">
+        <h1 style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">Certifications Inventory</h1>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+            A comprehensive collection of my professional development in Cybersecurity, Networking, and Systems Administration.
+        </p>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterCerts('all')">All</button>
+            <button class="filter-btn" onclick="filterCerts('google')">Google</button>
+            <button class="filter-btn" onclick="filterCerts('cisco')">Cisco</button>
+            <button class="filter-btn" onclick="filterCerts('udemy')">Udemy</button>
+            <button class="filter-btn" onclick="filterCerts('other')">Specializations</button>
+        </div>
+
+        <div class="certs-grid" id="certsGrid">
+            
+            <!-- Google Block -->
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Foundations of Cybersecurity</h3>
+                    <p class="cert-provider">Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Foundations Of Cybersecurity.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Connect and Protect: Network Security</h3>
+                    <p class="cert-provider">Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Connect Google 3.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Assets, Threats, and Vulnerabilities</h3>
+                    <p class="cert-provider">Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Assets Google 5.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Tools of the Trade: Linux and SQL</h3>
+                    <p class="cert-provider">Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Linux and Sql Google 4.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Automate Cybersecurity Tasks with Python</h3>
+                    <p class="cert-provider">Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Automate Python Google 7.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <!-- Cisco Block -->
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <i class="fa-solid fa-network-wired cert-icon"></i>
+                    <h3 class="cert-title">Networking Basics</h3>
+                    <p class="cert-provider">Cisco Networking Academy</p>
+                </div>
+                <a href="Certificates/Cisco Networking Academy_ Networking Basics.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <i class="fa-solid fa-shield-halved cert-icon"></i>
+                    <h3 class="cert-title">Network Support and Security</h3>
+                    <p class="cert-provider">Cisco Networking Academy</p>
+                </div>
+                <a href="Certificates/NetworkSupportandSecurityUpdate20251125-30-kp3j29.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <i class="fa-solid fa-route cert-icon"></i>
+                    <h3 class="cert-title">Network Addressing & Troubleshooting</h3>
+                    <p class="cert-provider">Cisco Networking Academy</p>
+                </div>
+                <a href="Certificates/NetworkAddressingandBasicTroubleshootingUpdate20251122-28-87we3n.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <!-- Udemy Block -->
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <i class="fa-solid fa-graduation-cap cert-icon"></i>
+                    <h3 class="cert-title">Computer Networks Fundamentals</h3>
+                    <p class="cert-provider">Udemy Certification</p>
+                </div>
+                <a href="Certificates/udemy Computer Network.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <i class="fa-solid fa-database cert-icon"></i>
+                    <h3 class="cert-title">MySQL Database Mastery</h3>
+                    <p class="cert-provider">Udemy Certification</p>
+                </div>
+                <a href="Certificates/udemy MySQL.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <i class="fa-solid fa-user-secret cert-icon"></i>
+                    <h3 class="cert-title">Ethical Hacking & Penetration Testing</h3>
+                    <p class="cert-provider">Udemy Certification</p>
+                </div>
+                <a href="Certificates/udemy Ethical.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <!-- Others Block -->
+            <div class="cert-card-sub" data-category="other">
+                <div>
+                    <i class="fa-solid fa-user-tie cert-icon"></i>
+                    <h3 class="cert-title">Office of the CISO Institute</h3>
+                    <p class="cert-provider">Professional Specialization</p>
+                </div>
+                <a href="Certificates/Office of the CISO insti.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="other">
+                <div>
+                    <i class="fa-solid fa-building-columns cert-icon"></i>
+                    <h3 class="cert-title">Mastercard Cybersecurity Talent</h3>
+                    <p class="cert-provider">Forage Internship Certification</p>
+                </div>
+                <a href="Certificates/Opeyemi Mastercard forage certificate.pdf" target="_blank" class="view-btn">View Certificate</a>
+            </div>
+
+        </div>
+    </section>
+
+    <script>
+        function filterCerts(category) {
+            const cards = document.querySelectorAll('.cert-card-sub');
+            const btns = document.querySelectorAll('.filter-btn');
+
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
