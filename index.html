@@ -29,13 +29,18 @@
             </button>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#home" class="active" onclick="closeMenu()">Home</a></li>
                 <li><a href="#about" onclick="closeMenu()">About</a></li>
                 <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
                 <li><a href="#certificates" onclick="closeMenu()">Certifications</a></li>
-                <li><a href="#skills" onclick="closeMenu()">Arsenal</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
                 <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-                <li><a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="nav-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a></li>
+                <li>
+                    <button type="button" class="nav-btn nav-btn-disabled" disabled aria-disabled="true" title="Resume is currently being updated. Available soon!">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span>Resume (Updating)</span>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -57,7 +62,7 @@
 
         <div class="cta-buttons">
             <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Explore Projects</a>
-            <a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-file-pdf"></i> View Resume (PDF)</a>
+            <button type="button" class="btn btn-secondary btn-disabled" disabled title="Resume is currently being updated. Available soon!"><i class="fa-solid fa-file-pdf"></i> Resume (Updating)</button>
             <a href="certificates.html" class="btn btn-secondary"><i class="fa-solid fa-certificate"></i> Verified Certs</a>
         </div>
     </header>
@@ -326,7 +331,7 @@
         </div>
     </section>
 
-    <!-- Technical Arsenal Section -->
+    <!-- Technical Skills Section -->
     <section id="skills" style="background: rgba(0, 240, 255, 0.02);">
         <div class="section-header">
             <span class="section-tag">SKILLS &amp; TOOLS</span>
@@ -397,19 +402,20 @@
                 <a href="https://github.com/OpeyemiAB" target="_blank" class="btn btn-secondary">
                     <i class="fa-brands fa-github"></i> GitHub
                 </a>
-                <a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="btn btn-secondary">
-                    <i class="fa-solid fa-file-pdf"></i> Resume
-                </a>
+                <button type="button" class="btn btn-secondary btn-disabled" disabled title="Resume is currently being updated. Available soon!">
+                    <i class="fa-solid fa-file-pdf"></i> Resume (Updating)
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Benjamin Opeyemi Abraham. Computer Science @ LASU &bull; Millennium Fellow (Class of 2026) MCN &amp; UNAI</p>
+        <p>&copy; 2026 Benjamin Opeyemi Abraham &bull; Computer Science @ LASU &bull; Cybersecurity &amp; Defense</p>
     </footer>
 
     <script>
+        // Mobile Navigation Toggle
         function toggleMenu() {
             const nav = document.getElementById('navLinks');
             const icon = document.getElementById('menuIcon');
@@ -432,6 +438,50 @@
                 icon.classList.add('fa-bars');
             }
         }
+
+        // Active ScrollSpy on Scroll & Click
+        const spySections = document.querySelectorAll('header[id], section[id]');
+        const navAnchorLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+        function updateScrollSpy() {
+            let activeId = '';
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+
+            // Check if user reached bottom of page (activate Contact)
+            if (scrollTotal > 0 && scrollY >= scrollTotal - 80) {
+                activeId = 'contact';
+            } else if (scrollY < 140) {
+                activeId = 'home';
+            } else {
+                spySections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 220 && rect.bottom >= 140) {
+                        activeId = section.getAttribute('id');
+                    }
+                });
+            }
+
+            if (activeId) {
+                navAnchorLinks.forEach(link => {
+                    if (link.getAttribute('href') === '#' + activeId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        }
+
+        navAnchorLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navAnchorLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        window.addEventListener('scroll', updateScrollSpy, { passive: true });
+        window.addEventListener('DOMContentLoaded', updateScrollSpy);
     </script>
 </body>
 </html>
