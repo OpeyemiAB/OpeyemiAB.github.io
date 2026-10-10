@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIWES Document Tracking Schema | Benjamin Opeyemi Abraham</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .code-container {
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            margin: 2rem 0;
+            overflow-x: auto;
+        }
+        pre {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #c9d1d9;
+        }
+        .sql-keyword { color: #ff7b72; font-weight: 600; }
+        .sql-type { color: #79c0ff; }
+        .sql-comment { color: #8b949e; font-style: italic; }
+        .sql-string { color: #a5d6ff; }
+        .action-bar {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 1.5rem 10%;">
+        <a href="index.html" class="view-btn" style="padding: 0.5rem 1.2rem;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+        </a>
+    </div>
+
+    <section style="padding-top: 10px; max-width: 1000px; margin: 0 auto;">
+        <span class="project-tag">RELATIONAL DATABASE MANAGEMENT</span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">SIWES Document Tracking System (DBMS)</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+            Architected for the <strong>LASUED SIWES Administrative Unit</strong> to transition manual paper tracking to an automated, auditable relational database workflow.
+        </p>
+
+        <div class="action-bar">
+            <a href="SIWES-Database/siwes_schema.sql" download class="btn btn-primary" style="font-size: 0.9rem; padding: 0.6rem 1.4rem;">
+                <i class="fa-solid fa-download"></i> Download .SQL File
+            </a>
+            <button onclick="copyCode()" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.4rem;">
+                <i class="fa-solid fa-copy"></i> <span id="copyText">Copy SQL Schema</span>
+            </button>
+            <a href="index.html#projects" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.4rem;">
+                <i class="fa-solid fa-grid-2"></i> All Projects
+            </a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div style="background: var(--card-bg); border: 1px solid var(--border); padding: 1.2rem; border-radius: 8px;">
+                <h4 style="color: #00F0FF; margin-bottom: 0.5rem;"><i class="fa-solid fa-table"></i> Relational Entities</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Normalized schema covering Students, Supervisors, Student-Supervisor Assignments, and Document Tracking logs.</p>
+            </div>
+            <div style="background: var(--card-bg); border: 1px solid var(--border); padding: 1.2rem; border-radius: 8px;">
+                <h4 style="color: #00F0FF; margin-bottom: 0.5rem;"><i class="fa-solid fa-shield-halved"></i> Data Integrity</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Enforces primary keys, unique constraints on Matric & Staff numbers, foreign keys with ON DELETE CASCADE, and ENUM state transitions.</p>
+            </div>
+            <div style="background: var(--card-bg); border: 1px solid var(--border); padding: 1.2rem; border-radius: 8px;">
+                <h4 style="color: #00F0FF; margin-bottom: 0.5rem;"><i class="fa-solid fa-bolt"></i> Operational Impact</h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">Eliminated lost paper logbooks and reduced document retrieval and review times by over 70%.</p>
+            </div>
+        </div>
+
+        <div class="code-container">
+            <pre id="sqlCode">-- SIWES Document Tracking System Schema
+-- Designed for LASUED SIWES Unit
+-- Created by Benjamin Opeyemi Abraham
+
+CREATE DATABASE IF NOT EXISTS lasued_siwes_db;
+USE lasued_siwes_db;
+
+-- 1. Table for Students
+CREATE TABLE IF NOT EXISTS students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    matric_no VARCHAR(20) UNIQUE NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(15),
+    email VARCHAR(100) UNIQUE,
+    placement_company VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Table for Supervisors
+CREATE TABLE IF NOT EXISTS supervisors (
+    supervisor_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    staff_no VARCHAR(20) UNIQUE NOT NULL,
+    department VARCHAR(100) NOT NULL,
+    is_internal BOOLEAN DEFAULT TRUE -- TRUE for LASUED faculty, FALSE for Industry supervisor
+);
+
+-- 3. Table for Student-Supervisor Assignment
+CREATE TABLE IF NOT EXISTS student_supervisor (
+    assignment_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    supervisor_id INT NOT NULL,
+    assignment_date DATE DEFAULT (CURRENT_DATE),
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE,
+    FOREIGN KEY (supervisor_id) REFERENCES supervisors(supervisor_id) ON DELETE CASCADE
+);
+
+-- 4. Table for Document Tracking (Logbooks, Acceptance Letters, etc.)
+CREATE TABLE IF NOT EXISTS document_tracking (
+    tracking_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    document_type ENUM('Logbook', 'Acceptance Letter', 'Sc-05 Form', 'Evaluation Form') NOT NULL,
+    submission_date DATE NOT NULL,
+    status ENUM('Pending Review', 'Approved', 'Rejected', 'Missing') DEFAULT 'Pending Review',
+    remarks TEXT,
+    FOREIGN KEY (student_id) REFERENCES students(student_id) ON DELETE CASCADE
+);
+
+-- Verification Seed Data
+INSERT INTO students (matric_no, first_name, last_name, department, placement_company)
+VALUES ('2023/CS/001', 'Opeyemi', 'Benjamin', 'Computer Science', 'Sympho Engineering Limited');
+
+INSERT INTO supervisors (name, staff_no, department)
+VALUES ('Dr. Adekunle', 'LASUED/042', 'Computer Science');</pre>
+        </div>
+    </section>
+
+    <footer style="margin-top: 5rem; padding: 3rem 10%; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+        <p>&copy; 2026 Benjamin Opeyemi Abraham. Computer Science @ LASU</p>
+    </footer>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('sqlCode').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                document.getElementById('copyText').innerText = "Copied to Clipboard!";
+                setTimeout(() => {
+                    document.getElementById('copyText').innerText = "Copy SQL Schema";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

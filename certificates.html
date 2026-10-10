@@ -3,97 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificates Portfolio | Opeyemi Benjamin</title>
+    <title>Certifications &amp; Credentials | Benjamin Opeyemi Abraham</title>
+    <meta name="description" content="Verified professional certifications in Cybersecurity, SOC Operations, Network Infrastructure, and Systems Engineering.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .filter-container {
-            margin: 3rem 0;
+            margin: 2.5rem 0;
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             flex-wrap: wrap;
             justify-content: center;
         }
 
         .filter-btn {
-            padding: 0.6rem 1.5rem;
+            padding: 0.6rem 1.4rem;
             border: 1px solid var(--border);
-            background: transparent;
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(8px);
             color: var(--text-secondary);
-            border-radius: 20px;
+            border-radius: 9999px;
             cursor: pointer;
-            transition: 0.3s;
-            font-size: 0.9rem;
+            transition: 0.25s ease;
+            font-size: 0.88rem;
+            font-weight: 500;
         }
 
         .filter-btn.active, .filter-btn:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-            background: rgba(47, 129, 247, 0.05);
+            color: #00F0FF;
+            border-color: #00F0FF;
+            background: rgba(0, 240, 255, 0.08);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
         }
 
         .certs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+            gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .cert-card-sub {
-            background: var(--card-bg);
+            background: rgba(22, 27, 34, 0.7);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 1.5rem;
-            transition: 0.3s;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 200px;
+            min-height: 220px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-card-sub::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #00F0FF, #2F81F7);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .cert-card-sub:hover {
             transform: translateY(-5px);
-            border-color: var(--accent);
-            box-shadow: 0 5px 20px rgba(47, 129, 247, 0.1);
+            border-color: rgba(0, 240, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.1);
+        }
+
+        .cert-card-sub:hover::before {
+            opacity: 1;
         }
 
         .cert-icon {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #00F0FF;
+            margin-bottom: 0.85rem;
         }
 
         .cert-title {
             font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
+            color: var(--text-primary);
+            line-height: 1.35;
         }
 
         .cert-provider {
+            font-size: 0.82rem;
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .cert-badge-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            background: rgba(47, 129, 247, 0.15);
+            color: #58a6ff;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
         }
 
         .view-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
             text-align: center;
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1rem;
             border: 1px solid var(--border);
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 0.85rem;
             font-weight: 600;
-            transition: 0.3s;
+            transition: 0.25s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.02);
         }
 
         .view-btn:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
+            background: #00F0FF;
+            color: #0B132B;
+            border-color: #00F0FF;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
         }
 
         .back-nav {
-            padding: 2rem 10%;
+            padding: 1.5rem 10%;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -107,157 +157,330 @@
 <body>
 
     <div class="back-nav">
-        <a href="index.html" style="color: var(--text-secondary); font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
+        <a href="index.html" class="view-btn" style="padding: 0.5rem 1.2rem;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+        </a>
     </div>
 
-    <section style="padding-top: 20px;">
-        <h1 style="text-align: center; font-size: 3rem; margin-bottom: 1rem;">Certifications Inventory</h1>
-        <p style="text-align: center; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-            A comprehensive collection of my professional development in Cybersecurity, Networking, and Systems Administration.
-        </p>
+    <section style="padding-top: 10px;">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <span class="cert-badge-tag" style="background: rgba(0, 240, 255, 0.1); color: #00F0FF;">VERIFIED ARSENAL</span>
+            <h1 style="font-size: 2.8rem; margin: 0.5rem 0 1rem; letter-spacing: -0.5px;">Professional Credentials</h1>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;">
+                Verified credentials across Security Operations, Network Infrastructure, Threat Analysis, and Systems Administration.
+            </p>
+        </div>
 
         <div class="filter-container">
-            <button class="filter-btn active" onclick="filterCerts('all')">All</button>
+            <button class="filter-btn active" onclick="filterCerts('all')">All Credentials</button>
+            <button class="filter-btn" onclick="filterCerts('isc2')">(ISC)&sup2;</button>
             <button class="filter-btn" onclick="filterCerts('google')">Google</button>
             <button class="filter-btn" onclick="filterCerts('cisco')">Cisco</button>
             <button class="filter-btn" onclick="filterCerts('udemy')">Udemy</button>
-            <button class="filter-btn" onclick="filterCerts('other')">Specializations</button>
+            <button class="filter-btn" onclick="filterCerts('leadership')">Leadership &amp; Industry</button>
         </div>
 
         <div class="certs-grid" id="certsGrid">
-            
-            <!-- Google Block -->
-            <div class="cert-card-sub" data-category="google">
-                <div>
-                    <i class="fa-brands fa-google cert-icon"></i>
-                    <h3 class="cert-title">Foundations of Cybersecurity</h3>
-                    <p class="cert-provider">Google Professional Certificate</p>
-                </div>
-                <a href="Certificates/Foundations Of Cybersecurity.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
 
-            <div class="cert-card-sub" data-category="google">
+            <!-- (ISC)2 Certified in Cybersecurity BLOCK -->
+            <div class="cert-card-sub" data-category="isc2">
                 <div>
-                    <i class="fa-brands fa-google cert-icon"></i>
-                    <h3 class="cert-title">Connect and Protect: Network Security</h3>
-                    <p class="cert-provider">Google Professional Certificate</p>
-                </div>
-                <a href="Certificates/Connect Google 3.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
-
-            <div class="cert-card-sub" data-category="google">
-                <div>
-                    <i class="fa-brands fa-google cert-icon"></i>
-                    <h3 class="cert-title">Assets, Threats, and Vulnerabilities</h3>
-                    <p class="cert-provider">Google Professional Certificate</p>
-                </div>
-                <a href="Certificates/Assets Google 5.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
-
-            <div class="cert-card-sub" data-category="google">
-                <div>
-                    <i class="fa-brands fa-google cert-icon"></i>
-                    <h3 class="cert-title">Tools of the Trade: Linux and SQL</h3>
-                    <p class="cert-provider">Google Professional Certificate</p>
-                </div>
-                <a href="Certificates/Linux and Sql Google 4.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
-
-            <div class="cert-card-sub" data-category="google">
-                <div>
-                    <i class="fa-brands fa-google cert-icon"></i>
-                    <h3 class="cert-title">Automate Cybersecurity Tasks with Python</h3>
-                    <p class="cert-provider">Google Professional Certificate</p>
-                </div>
-                <a href="Certificates/Automate Python Google 7.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
-
-            <!-- Cisco Block -->
-            <div class="cert-card-sub" data-category="cisco">
-                <div>
-                    <i class="fa-solid fa-network-wired cert-icon"></i>
-                    <h3 class="cert-title">Networking Basics</h3>
-                    <p class="cert-provider">Cisco Networking Academy</p>
-                </div>
-                <a href="Certificates/Cisco Networking Academy_ Networking Basics.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
-
-            <div class="cert-card-sub" data-category="cisco">
-                <div>
+                    <span class="cert-badge-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF;">GLOBAL CERTIFICATION</span>
                     <i class="fa-solid fa-shield-halved cert-icon"></i>
-                    <h3 class="cert-title">Network Support and Security</h3>
-                    <p class="cert-provider">Cisco Networking Academy</p>
+                    <h3 class="cert-title">Certified in Cybersecurity (CC)</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> (ISC)&sup2; &bull; Issued May 2026</p>
                 </div>
-                <a href="Certificates/NetworkSupportandSecurityUpdate20251125-30-kp3j29.pdf" target="_blank" class="view-btn">View Certificate</a>
+                <a href="Certificates/ISC2_Certified_in_Cybersecurity_CC.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="isc2">
+                <div>
+                    <span class="cert-badge-tag">DOMAIN 1</span>
+                    <i class="fa-solid fa-lock cert-icon"></i>
+                    <h3 class="cert-title">CC: Security Principles</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> (ISC)&sup2; Specialized Domain</p>
+                </div>
+                <a href="Certificates/ISC2_CC_Domain_1_Security_Principles.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="isc2">
+                <div>
+                    <span class="cert-badge-tag">DOMAIN 2</span>
+                    <i class="fa-solid fa-triangle-exclamation cert-icon"></i>
+                    <h3 class="cert-title">CC: Incident Response, BCDR</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> (ISC)&sup2; Specialized Domain</p>
+                </div>
+                <a href="Certificates/ISC2_CC_Domain_2_Incident_Response.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="isc2">
+                <div>
+                    <span class="cert-badge-tag">DOMAIN 3</span>
+                    <i class="fa-solid fa-key cert-icon"></i>
+                    <h3 class="cert-title">CC: Access Control Concepts</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> (ISC)&sup2; Specialized Domain</p>
+                </div>
+                <a href="Certificates/ISC2_CC_Domain_3_Access_Control.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="isc2">
+                <div>
+                    <span class="cert-badge-tag">DOMAIN 4</span>
+                    <i class="fa-solid fa-network-wired cert-icon"></i>
+                    <h3 class="cert-title">CC: Network Security</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> (ISC)&sup2; Specialized Domain</p>
+                </div>
+                <a href="Certificates/ISC2_CC_Domain_4_Network_Security.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="isc2">
+                <div>
+                    <span class="cert-badge-tag">DOMAIN 5</span>
+                    <i class="fa-solid fa-server cert-icon"></i>
+                    <h3 class="cert-title">CC: Security Operations</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> (ISC)&sup2; Specialized Domain</p>
+                </div>
+                <a href="Certificates/ISC2_CC_Domain_5_Security_Operations.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <!-- CISCO BLOCK -->
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <span class="cert-badge-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF;">CAREER PATH</span>
+                    <i class="fa-solid fa-user-shield cert-icon"></i>
+                    <h3 class="cert-title">Junior Cybersecurity Analyst Path</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy &bull; Apr 2026</p>
+                </div>
+                <a href="Certificates/Cisco_Junior_Cybersecurity_Analyst_Career_Path.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
             </div>
 
             <div class="cert-card-sub" data-category="cisco">
                 <div>
+                    <span class="cert-badge-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF;">CAREER PATH</span>
+                    <i class="fa-solid fa-network-wired cert-icon"></i>
+                    <h3 class="cert-title">Network Technician Career Path</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy &bull; Nov 2025</p>
+                </div>
+                <a href="Certificates/NetworkTechnicianCareerPathUpdate20251125-30-by67e7.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <span class="cert-badge-tag">ENDPOINT DEFENSE</span>
+                    <i class="fa-solid fa-laptop-medical cert-icon"></i>
+                    <h3 class="cert-title">Endpoint Security</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy &bull; Feb 2026</p>
+                </div>
+                <a href="Certificates/Cisco_Endpoint_Security.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <span class="cert-badge-tag">NETWORK SECURITY</span>
+                    <i class="fa-solid fa-shield-virus cert-icon"></i>
+                    <h3 class="cert-title">Cyber Threat Management</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy</p>
+                </div>
+                <a href="Certificates/Cyber_Threat_Management_certificate_oluwafemibenjamin488-gmail-com_5c4fa553-2f5f-4c9e-a96c-132c3540b493.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <span class="cert-badge-tag">DEFENSIVE OPERATIONS</span>
+                    <i class="fa-solid fa-shield cert-icon"></i>
+                    <h3 class="cert-title">Network Defense</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy</p>
+                </div>
+                <a href="Certificates/Network_Defense_certificate_oluwafemibenjamin488-gmail-com_a04295c7-0843-48ab-8d6f-b441da70de1b.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="cisco">
+                <div>
+                    <span class="cert-badge-tag">TROUBLESHOOTING</span>
                     <i class="fa-solid fa-route cert-icon"></i>
-                    <h3 class="cert-title">Network Addressing & Troubleshooting</h3>
-                    <p class="cert-provider">Cisco Networking Academy</p>
+                    <h3 class="cert-title">Network Addressing &amp; Troubleshooting</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy &bull; Nov 2025</p>
                 </div>
-                <a href="Certificates/NetworkAddressingandBasicTroubleshootingUpdate20251122-28-87we3n.pdf" target="_blank" class="view-btn">View Certificate</a>
+                <a href="Certificates/NetworkAddressingandBasicTroubleshootingUpdate20251122-28-87we3n.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
             </div>
 
-            <!-- Udemy Block -->
-            <div class="cert-card-sub" data-category="udemy">
+            <div class="cert-card-sub" data-category="cisco">
                 <div>
-                    <i class="fa-solid fa-graduation-cap cert-icon"></i>
-                    <h3 class="cert-title">Computer Networks Fundamentals</h3>
-                    <p class="cert-provider">Udemy Certification</p>
+                    <span class="cert-badge-tag">HONOR / COMPETITION</span>
+                    <i class="fa-solid fa-trophy cert-icon" style="color: #FFD700;"></i>
+                    <h3 class="cert-title">Learn-A-Thon 2026 Honor</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cisco Networking Academy Award</p>
                 </div>
-                <a href="Certificates/udemy Computer Network.pdf" target="_blank" class="view-btn">View Certificate</a>
+                <a href="Certificates/Cisco_Learn_A_Thon_2026.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
             </div>
 
-            <div class="cert-card-sub" data-category="udemy">
+            <!-- GOOGLE BLOCK -->
+            <div class="cert-card-sub" data-category="google">
                 <div>
-                    <i class="fa-solid fa-database cert-icon"></i>
-                    <h3 class="cert-title">MySQL Database Mastery</h3>
-                    <p class="cert-provider">Udemy Certification</p>
+                    <span class="cert-badge-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF;">8-COURSE SPECIALIZATION</span>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Google Cybersecurity Professional</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Coursera &bull; Credly Verified</p>
                 </div>
-                <a href="Certificates/udemy MySQL.pdf" target="_blank" class="view-btn">View Certificate</a>
+                <a href="Certificates/GOOGLE Coursera CERT.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
             </div>
 
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <span class="cert-badge-tag">7-COURSE SPECIALIZATION</span>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Google Network Security</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Coursera Specialization</p>
+                </div>
+                <a href="Certificates/Google Network Security.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <span class="cert-badge-tag">5-COURSE SPECIALIZATION</span>
+                    <i class="fa-brands fa-google cert-icon"></i>
+                    <h3 class="cert-title">Google IT Support Professional</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Coursera Specialization</p>
+                </div>
+                <a href="Certificates/Supportcert/Google IT support.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <span class="cert-badge-tag">AUTOMATION &amp; SCRIPTING</span>
+                    <i class="fa-brands fa-python cert-icon"></i>
+                    <h3 class="cert-title">Automate Tasks with Python</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Automate Python Google 7.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <span class="cert-badge-tag">DETECTION &amp; INCIDENT RESPONSE</span>
+                    <i class="fa-solid fa-bell cert-icon"></i>
+                    <h3 class="cert-title">Sound the Alarm: Detection &amp; Response</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Sounds the alarm Google 6.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="google">
+                <div>
+                    <span class="cert-badge-tag">SYSTEMS &amp; AUDIT</span>
+                    <i class="fa-brands fa-linux cert-icon"></i>
+                    <h3 class="cert-title">Tools of the Trade: Linux &amp; SQL</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Google Professional Certificate</p>
+                </div>
+                <a href="Certificates/Linux and Sql Google 4.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <!-- UDEMY BLOCK -->
             <div class="cert-card-sub" data-category="udemy">
                 <div>
+                    <span class="cert-badge-tag">OFFENSIVE &amp; DEFENSIVE</span>
                     <i class="fa-solid fa-user-secret cert-icon"></i>
-                    <h3 class="cert-title">Ethical Hacking & Penetration Testing</h3>
-                    <p class="cert-provider">Udemy Certification</p>
+                    <h3 class="cert-title">Ethical Hacking: Zero to Hero</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Udemy &bull; June 2025</p>
                 </div>
-                <a href="Certificates/udemy Ethical.pdf" target="_blank" class="view-btn">View Certificate</a>
+                <a href="Certificates/udemy Ethical.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
             </div>
 
-            <!-- Others Block -->
-            <div class="cert-card-sub" data-category="other">
+            <div class="cert-card-sub" data-category="udemy">
                 <div>
+                    <span class="cert-badge-tag">NETWORK PENETRATION</span>
+                    <i class="fa-solid fa-wifi cert-icon"></i>
+                    <h3 class="cert-title">Network Hacking Complete Course</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Udemy &bull; June 2025</p>
+                </div>
+                <a href="Certificates/udemy neywork hacking.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <span class="cert-badge-tag">SUBNETTING &amp; ARCHITECTURE</span>
+                    <i class="fa-solid fa-diagram-project cert-icon"></i>
+                    <h3 class="cert-title">IP Addressing &amp; Subnetting</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Udemy &bull; June 2025</p>
+                </div>
+                <a href="Certificates/udemy IP address.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <span class="cert-badge-tag">NETWORKING PROTOCOLS</span>
+                    <i class="fa-solid fa-ethernet cert-icon"></i>
+                    <h3 class="cert-title">Computer Networks Fundamentals</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Udemy &bull; June 2025</p>
+                </div>
+                <a href="Certificates/udemy Computer Network.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <span class="cert-badge-tag">EXPLOIT FRAMEWORKS</span>
+                    <i class="fa-solid fa-bug cert-icon"></i>
+                    <h3 class="cert-title">Metasploit from Scratch</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Udemy &bull; May 2025</p>
+                </div>
+                <a href="Certificates/udemy metasploitable.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="udemy">
+                <div>
+                    <span class="cert-badge-tag">RELATIONAL DATABASES</span>
+                    <i class="fa-solid fa-database cert-icon"></i>
+                    <h3 class="cert-title">MySQL for Beginners: Complete Training</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Udemy &bull; May 2025</p>
+                </div>
+                <a href="Certificates/udemy MySQL.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <!-- LEADERSHIP & INDUSTRY BLOCK -->
+            <div class="cert-card-sub" data-category="leadership">
+                <div>
+                    <span class="cert-badge-tag" style="background: rgba(0, 240, 255, 0.15); color: #00F0FF;">GLOBAL FELLOWSHIP</span>
+                    <i class="fa-solid fa-earth-americas cert-icon"></i>
+                    <h3 class="cert-title">Millennium Fellow (Class of 2026)</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Millennium Campus Network (MCN) &amp; UNAI</p>
+                </div>
+                <a href="https://www.millenniumfellows.org/" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> Program Info</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="leadership">
+                <div>
+                    <span class="cert-badge-tag">ENTERPRISE SIMULATION</span>
+                    <i class="fa-solid fa-building-columns cert-icon"></i>
+                    <h3 class="cert-title">Mastercard Cybersecurity Job Simulation</h3>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Forage &bull; July 2025</p>
+                </div>
+                <a href="Certificates/Opeyemi Mastercard forage certificate.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
+            </div>
+
+            <div class="cert-card-sub" data-category="leadership">
+                <div>
+                    <span class="cert-badge-tag">EXECUTIVE SECURITY</span>
                     <i class="fa-solid fa-user-tie cert-icon"></i>
                     <h3 class="cert-title">Office of the CISO Institute</h3>
-                    <p class="cert-provider">Professional Specialization</p>
+                    <p class="cert-provider"><i class="fa-solid fa-certificate"></i> Cybersecurity Essentials &bull; Jan 2026</p>
                 </div>
-                <a href="Certificates/Office of the CISO insti.pdf" target="_blank" class="view-btn">View Certificate</a>
-            </div>
-
-            <div class="cert-card-sub" data-category="other">
-                <div>
-                    <i class="fa-solid fa-building-columns cert-icon"></i>
-                    <h3 class="cert-title">Mastercard Cybersecurity Talent</h3>
-                    <p class="cert-provider">Forage Internship Certification</p>
-                </div>
-                <a href="Certificates/Opeyemi Mastercard forage certificate.pdf" target="_blank" class="view-btn">View Certificate</a>
+                <a href="Certificates/Office of the CISO insti.pdf" target="_blank" class="view-btn"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate</a>
             </div>
 
         </div>
     </section>
 
+    <footer style="margin-top: 5rem; padding: 3rem 10%; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+        <p>&copy; 2026 Benjamin Opeyemi Abraham. Computer Science @ LASU &bull; Millennium Fellow (Class of 2026) MCN &amp; UNAI</p>
+    </footer>
+
     <script>
         function filterCerts(category) {
-            const cards = document.querySelectorAll('.cert-card-sub');
-            const btns = document.querySelectorAll('.filter-btn');
-
-            btns.forEach(btn => btn.classList.remove('active'));
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
+            const cards = document.querySelectorAll('.cert-card-sub');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
                     card.classList.remove('hidden');
@@ -267,6 +490,5 @@
             });
         }
     </script>
-
 </body>
 </html>

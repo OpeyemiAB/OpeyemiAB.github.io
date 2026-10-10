@@ -3,217 +3,452 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Benjamin Opeyemi Abraham | Aspiring SOC Analyst & Millennium Fellow</title>
-    <meta name="description" content="Portfolio of Benjamin Opeyemi Abraham, Millennium Fellow (Class of 2026), Computer Science student at LASU, and aspiring SOC Analyst specializing in Threat Detection, Incident Response, and Network Infrastructure.">
+    <title>Benjamin Opeyemi Abraham | SOC Analyst &amp; Millennium Fellow</title>
+    <meta name="description" content="Cybersecurity portfolio of Benjamin Opeyemi Abraham: Aspiring SOC Analyst, Millennium Fellow (Class of 2026), specializing in Wazuh SIEM, Sysmon telemetry, threat detection, and network defense.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
+    <!-- Navigation -->
     <nav>
-        <div class="logo">OPEYEMI.BENJAMIN</div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#projects">Work</a></li>
-            <li><a href="#certificates">Certifications</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div class="logo-container">
+            <svg class="logo-shield" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 32 10 L 48 16 C 48 32 40 46 32 54 C 24 46 16 32 16 16 Z" stroke="#00F0FF" stroke-width="3" fill="rgba(0, 240, 255, 0.1)"/>
+                <circle cx="32" cy="28" r="4" fill="#00F0FF"/>
+                <path d="M 32 32 L 32 38" stroke="#00F0FF" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div class="logo-text">BENJAMIN<span>.OPEYEMI</span></div>
+        </div>
+
+        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars" id="menuIcon"></i>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" onclick="closeMenu()">Home</a></li>
+            <li><a href="#about" onclick="closeMenu()">About</a></li>
+            <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+            <li><a href="#certificates" onclick="closeMenu()">Certifications</a></li>
+            <li><a href="#skills" onclick="closeMenu()">Arsenal</a></li>
+            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            <li><a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="nav-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a></li>
         </ul>
     </nav>
 
+    <!-- Hero Section -->
     <header class="hero" id="home">
-        <h1>Building a <span style="color: var(--accent);">Rock-Solid</span> Foundation in Security.</h1>
-        <p>Computer Science undergraduate at <strong>Lagos State University (LASU)</strong> &amp; <strong>Millennium Fellow (Class of 2026)</strong> convened by <strong>MCN &amp; UNAI</strong>. Aspiring SOC Analyst &amp; Cyber Core Associate (UBI), experienced in Wazuh SIEM, Sysmon telemetry, and network infrastructure.</p>
+        <div class="status-badge">
+            <span class="status-pulse"></span>
+            Available for SOC Analyst &amp; Blue Team Roles
+        </div>
+
+        <h1>Defending Systems from the <span class="highlight">Packet Level Up.</span></h1>
+
+        <p>
+            Computer Science undergraduate at <strong>Lagos State University (LASU)</strong> &amp; 
+            <strong>Millennium Fellow (Class of 2026)</strong> convened by <strong>MCN &amp; UNAI</strong>. 
+            Hands-on expertise in <strong>Wazuh SIEM</strong>, <strong>Sysmon telemetry</strong>, <strong>automated active defense</strong>, and <strong>NIST CSF &amp; ISO 27001 risk evaluation</strong>.
+        </p>
+
         <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">Check Projects</a>
-            <a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-file-pdf"></i> Resume / CV</a>
+            <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-shield-halved"></i> Explore Projects</a>
+            <a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-file-pdf"></i> View Resume (PDF)</a>
+            <a href="certificates.html" class="btn btn-secondary"><i class="fa-solid fa-certificate"></i> Verified Certs</a>
+        </div>
+
+        <div class="hero-metrics">
+            <div class="metric-item">
+                <div class="metric-number">(ISC)&sup2; CC</div>
+                <div class="metric-label">Certified in Cybersecurity</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">&lt; 60s</div>
+                <div class="metric-label">Automated Active Defense</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">20+</div>
+                <div class="metric-label">Verified Certifications</div>
+            </div>
+            <div class="metric-item">
+                <div class="metric-number">Class of &apos;26</div>
+                <div class="metric-label">Millennium Fellow (UNAI)</div>
+            </div>
         </div>
     </header>
 
+    <!-- About Section -->
     <section id="about">
-        <h2>About Me</h2>
-        <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 300px;">
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
-                    I am a dedicated Computer Science student building a "rock-solid foundation" in defensive cybersecurity, incident response, and network infrastructure. My mission is to bridge the gap between academic theory and the high-pressure demands of a modern Security Operations Center (SOC).
+        <div class="section-header">
+            <span class="section-tag">// 01. BACKGROUND &amp; LEADERSHIP</span>
+            <h2>About Me</h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p>
+                    I am a dedicated Computer Science student bridging the gap between theoretical computing and the real-world operational velocity of an enterprise Security Operations Center (SOC).
                 </p>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
-                    Selected as a <strong>Millennium Fellow (Class of 2026)</strong> by the <strong>Millennium Campus Network (MCN) &amp; United Nations Academic Impact (UNAI)</strong>, I lead student initiatives advancing technology access and digital governance.
+                <p>
+                    Honored to be selected as a <strong>Millennium Fellow (Class of 2026)</strong> by the <strong>Millennium Campus Network (MCN)</strong> and the <strong>United Nations Academic Impact (UNAI)</strong>, I lead collegiate initiatives tackling technology access and digital governance principles.
                 </p>
-                <p style="color: var(--text-secondary);">
-                    My practical experience spans investigating simulated breaches as a <strong>Cyber Core Associate Intern at Ubuntu Bridge Initiative (UBI)</strong>, evaluating risk against NIST CSF and ISO 27001 standards, and maintaining enterprise IT systems as a <strong>SIWES Intern at LASUED</strong>.
+                <p>
+                    My defensive security background includes investigating live simulated network breaches as a <strong>Cyber Core Associate Intern at Ubuntu Bridge Initiative (UBI) Cohort 01</strong>, mapping risks to <strong>NIST CSF &amp; ISO 27001</strong>, and supporting enterprise IT infrastructure as a <strong>SIWES Intern at LASUED</strong>.
                 </p>
             </div>
-            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 1rem;">
-                <div style="background: var(--card-bg); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem;">
-                    <i class="fa-solid fa-earth-americas" style="color: var(--accent); font-size: 1.5rem;"></i>
-                    <div>
-                        <h4 style="font-size: 0.9rem;">Global Fellowship</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Millennium Fellow '26 (MCN &amp; UNAI)</p>
+
+            <div class="about-cards">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <div class="info-content">
+                        <h4>Global Fellowship</h4>
+                        <p>Millennium Fellow (Class of 2026) &bull; MCN &amp; UNAI</p>
                     </div>
                 </div>
-                <div style="background: var(--card-bg); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem;">
-                    <i class="fa-solid fa-school" style="color: var(--accent); font-size: 1.5rem;"></i>
-                    <div>
-                        <h4 style="font-size: 0.9rem;">Education</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">B.Sc. Computer Science, LASU</p>
+
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div class="info-content">
+                        <h4>Defensive Cyber Experience</h4>
+                        <p>Cyber Core Associate (UBI) &amp; SIWES Intern (LASUED)</p>
                     </div>
                 </div>
-                <div style="background: var(--card-bg); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem;">
-                    <i class="fa-solid fa-shield-halved" style="color: var(--accent); font-size: 1.5rem;"></i>
-                    <div>
-                        <h4 style="font-size: 0.9rem;">Practical Experience</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">UBI Cohort 01 &amp; SIWES Intern (LASUED)</p>
+
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="info-content">
+                        <h4>Education</h4>
+                        <p>B.Sc. Computer Science &bull; Lagos State University (LASU)</p>
                     </div>
                 </div>
-                <div style="background: var(--card-bg); padding: 1.2rem; border-radius: 8px; border: 1px solid var(--border); display: flex; align-items: center; gap: 1rem;">
-                    <i class="fa-solid fa-award" style="color: var(--accent); font-size: 1.5rem;"></i>
-                    <div>
-                        <h4 style="font-size: 0.9rem;">Focus Areas</h4>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">SOC Operations, Threat Detection &amp; NIST CSF</p>
+
+                <div class="info-card">
+                    <div class="info-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                    <div class="info-content">
+                        <h4>Specializations</h4>
+                        <p>Wazuh SIEM, Sysmon Telemetry &amp; Threat Containment</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects">
-        <h2>Selected Projects</h2>
+        <div class="section-header">
+            <span class="section-tag">// 02. PRACTICAL LABS &amp; SYSTEMS</span>
+            <h2>Featured Projects</h2>
+        </div>
+
         <div class="projects-grid">
+
+            <!-- Project 1 -->
             <div class="project-card">
-                <span class="project-tag">ADVANCED SOC</span>
-                <h3>Malware & Zero-Trust Defense Lab</h3>
-                <p>Engineered a custom telemetry pipeline focusing on Advanced Endpoint Defense. Successfully detected **Level 15 Malware Drops** and Autonomous **UAC Bypasses** using deeply integrated Sysmon profiling.</p>
+                <div>
+                    <span class="project-tag">ADVANCED ENDPOINT DEFENSE</span>
+                    <h3>Malware &amp; Zero-Trust Defense Lab</h3>
+                    <p>
+                        Engineered custom Sysmon telemetry pipelines capturing high-severity zero-trust evasion threats. Detected Level 15 unauthorized executable drops and autonomous Level 12 UAC Bypasses (<code>FodHelper.exe</code>).
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-pill">Wazuh Server</span>
+                        <span class="tech-pill">Microsoft Sysmon</span>
+                        <span class="tech-pill">Kali Linux</span>
+                        <span class="tech-pill">Windows 10 Pro</span>
+                    </div>
+                </div>
                 <div class="project-links">
-                    <a href="https://github.com/OpeyemiAB/SOC-Wazuh-Lab" target="_blank"><i class="fa-brands fa-github"></i> View Repo</a>
+                    <a href="https://github.com/OpeyemiAB/SOC-Wazuh-Lab" target="_blank" class="project-btn primary">
+                        <i class="fa-brands fa-github"></i> View Repo
+                    </a>
                 </div>
             </div>
+
+            <!-- Project 2 -->
             <div class="project-card">
-                <span class="project-tag">CYBER LAB</span>
-                <h3>Wazuh SOC Labs</h3>
-                <p>Engineered a professional SOC ecosystem. Configured **Active Response** to neutralize brute-force attacks in < 60s, integrated **Sysmon** for deep telemetry, and executed **CIS Compliance** audits.</p>
+                <div>
+                    <span class="project-tag">SIEM &amp; ACTIVE RESPONSE</span>
+                    <h3>Wazuh SOC Labs &amp; Autonomous Defense</h3>
+                    <p>
+                        Full-scale SOC environment deployed on Ubuntu Server. Integrated Microsoft Sysmon to detect surrogate injections (<code>dllhost.exe</code>). Configured Active Response neutralizing SMB brute-force attacks (MITRE T1110) via automated firewall blocks in &lt; 60 seconds.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-pill">Wazuh SIEM</span>
+                        <span class="tech-pill">SOAR Active Response</span>
+                        <span class="tech-pill">MITRE ATT&amp;CK</span>
+                        <span class="tech-pill">CIS Benchmark</span>
+                    </div>
+                </div>
                 <div class="project-links">
-                    <a href="https://github.com/OpeyemiAB/SOC-Portfolio-Final" target="_blank"><i class="fa-brands fa-github"></i> View Repo</a>
+                    <a href="https://github.com/OpeyemiAB/SOC-Portfolio-Final" target="_blank" class="project-btn primary">
+                        <i class="fa-brands fa-github"></i> View Repo
+                    </a>
                 </div>
             </div>
+
+            <!-- Project 3 -->
             <div class="project-card">
-                <span class="project-tag">DATABASE</span>
-                <h3>SIWES Document Tracking</h3>
-                <p>Architected a professional MySQL database for the LASUED SIWES unit to digitize manual student records, supervisor assignments, and document status tracking.</p>
+                <div>
+                    <span class="project-tag">SOCIAL ENGINEERING &amp; SIMULATION</span>
+                    <h3>Go2Cyber Naija CyberShield</h3>
+                    <p>
+                        Public Cybersecurity Resource Hub &amp; Interactive Bank Scam Simulator built for the GCAP Cohort 1 Capstone Project. Educates users on financial fraud vectors, phishing tactics, and everyday cyber hygiene.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-pill">Phishing Simulation</span>
+                        <span class="tech-pill">Fraud Defense</span>
+                        <span class="tech-pill">Threat Intel</span>
+                        <span class="tech-pill">JavaScript</span>
+                    </div>
+                </div>
                 <div class="project-links">
-                    <a href="SIWES-Database/siwes_schema.sql" target="_blank"><i class="fa-solid fa-database"></i> View Schema</a>
+                    <a href="https://github.com/OpeyemiAB/naija-cybershield" target="_blank" class="project-btn primary">
+                        <i class="fa-brands fa-github"></i> View Repo
+                    </a>
                 </div>
             </div>
+
+            <!-- Project 4 -->
             <div class="project-card">
-                <span class="project-tag">PHISHING &amp; SCAM DEFENSE</span>
-                <h3>Go2Cyber Naija CyberShield</h3>
-                <p>Public Cybersecurity Resource Hub &amp; Interactive Bank Scam Simulator built for the GCAP Cohort 1 Capstone Project. Educates users on financial fraud vectors and phishing awareness.</p>
+                <div>
+                    <span class="project-tag">DATABASE MANAGEMENT &amp; AUTOMATION</span>
+                    <h3>SIWES Document Tracking System</h3>
+                    <p>
+                        Architected a normalized relational MySQL database for the LASUED SIWES unit to transition manual paper tracking to a digital, real-time tracking workflow, cutting retrieval times by 70%.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-pill">MySQL 8.0</span>
+                        <span class="tech-pill">Relational Schema</span>
+                        <span class="tech-pill">Workflow Digitalization</span>
+                    </div>
+                </div>
                 <div class="project-links">
-                    <a href="https://github.com/OpeyemiAB/naija-cybershield" target="_blank"><i class="fa-brands fa-github"></i> View Repo</a>
+                    <a href="siwes-db.html" class="project-btn primary">
+                        <i class="fa-solid fa-code"></i> Interactive Schema
+                    </a>
+                    <a href="SIWES-Database/siwes_schema.sql" download class="project-btn">
+                        <i class="fa-solid fa-download"></i> .SQL File
+                    </a>
                 </div>
             </div>
+
+            <!-- Project 5 -->
             <div class="project-card">
-                <span class="project-tag">NETWORKING</span>
-                <h3>Network Foundations Lab</h3>
-                <p>Practical labs documenting network architecture and protocol analysis (OSI, TCP/IP, DNS) as part of my professional certification roadmap.</p>
+                <div>
+                    <span class="project-tag">NETWORK PROTOCOLS &amp; TELEMETRY</span>
+                    <h3>Network Foundations for SOC Analysts</h3>
+                    <p>
+                        Practical laboratory notes and packet inspection documentation mapping the OSI model and TCP/IP stack directly to SIEM alert triage and transport-layer boundary controls.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-pill">TCP/IP Architecture</span>
+                        <span class="tech-pill">Packet Analysis</span>
+                        <span class="tech-pill">Wireshark</span>
+                    </div>
+                </div>
                 <div class="project-links">
-                    <a href="Networking-Lessons/Lesson_1.md" target="_blank"><i class="fa-solid fa-file-lines"></i> Lab Notes</a>
+                    <a href="networking-lesson.html" class="project-btn primary">
+                        <i class="fa-solid fa-book-open"></i> Read Lab Notes
+                    </a>
+                    <a href="Networking-Lessons/Lesson_1.md" download class="project-btn">
+                        <i class="fa-solid fa-file-lines"></i> .MD Notes
+                    </a>
                 </div>
             </div>
-            </div>
+
         </div>
     </section>
 
+    <!-- Certifications Section -->
     <section id="certificates">
-        <h2>Professional Certifications</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem;">Top-tier credentials in Cybersecurity and Networking.</p>
+        <div class="section-header">
+            <span class="section-tag">// 03. CREDENTIALS &amp; ACCREDITATIONS</span>
+            <h2>Featured Certifications</h2>
+        </div>
+
         <div class="cert-gallery">
+
+            <!-- ISC2 Card -->
             <div class="cert-card">
-                <img src="Certificates/google-cybersecurity-professional-certificate-v2.png" alt="Google Cybersecurity" class="cert-img">
+                <div class="cert-img-wrapper">
+                    <img src="Certificates/isc2-candidate.png" alt="(ISC)2 Certified in Cybersecurity" class="cert-img">
+                </div>
                 <div class="cert-info">
-                    <h4>Google Cybersecurity</h4>
-                    <p style="margin-bottom: 1rem;">Professional Specialization</p>
-                    <a href="Certificates/GOOGLE Coursera CERT.pdf" target="_blank" class="view-btn">View Certificate</a>
+                    <div>
+                        <h4>(ISC)&sup2; Certified in Cybersecurity (CC)</h4>
+                        <p>Global Accreditation &bull; Issued May 2026</p>
+                    </div>
+                    <a href="Certificates/ISC2_Certified_in_Cybersecurity_CC.pdf" target="_blank" class="view-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+                    </a>
                 </div>
             </div>
+
+            <!-- Google Cyber Card -->
             <div class="cert-card">
-                <img src="Certificates/google-it-support.png" alt="Google IT Support" class="cert-img">
+                <div class="cert-img-wrapper">
+                    <img src="Certificates/google-cybersecurity-professional-certificate-v2.png" alt="Google Cybersecurity" class="cert-img">
+                </div>
                 <div class="cert-info">
-                    <h4>Google IT Support</h4>
-                    <p style="margin-bottom: 1rem;">Professional Specialization</p>
-                    <a href="Certificates/Supportcert/Google IT support.pdf" target="_blank" class="view-btn">View Certificate</a>
+                    <div>
+                        <h4>Google Cybersecurity Professional</h4>
+                        <p>8-Course Specialization &bull; Credly Verified</p>
+                    </div>
+                    <a href="Certificates/GOOGLE Coursera CERT.pdf" target="_blank" class="view-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+                    </a>
                 </div>
             </div>
+
+            <!-- Cisco Junior Cyber Analyst -->
             <div class="cert-card">
-                <img src="Certificates/network-addressing-and-basic-troubleshooting.png" alt="Cisco Networking" class="cert-img">
+                <div class="cert-img-wrapper">
+                    <img src="Certificates/junior-cybersecurity-analyst-career-path.1.png" alt="Cisco Junior Cybersecurity Analyst" class="cert-img">
+                </div>
                 <div class="cert-info">
-                    <h4>Cisco Academy</h4>
-                    <p style="margin-bottom: 1rem;">Network Addressing & Troubleshooting</p>
-                    <a href="Certificates/NetworkAddressingandBasicTroubleshootingUpdate20251122-28-87we3n.pdf" target="_blank" class="view-btn">View Certificate</a>
+                    <div>
+                        <h4>Junior Cybersecurity Analyst Path</h4>
+                        <p>Cisco Networking Academy &bull; April 2026</p>
+                    </div>
+                    <a href="Certificates/Cisco_Junior_Cybersecurity_Analyst_Career_Path.pdf" target="_blank" class="view-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+                    </a>
                 </div>
             </div>
+
+            <!-- Cisco Endpoint Security -->
             <div class="cert-card">
-                <img src="Certificates/network-support-and-security.png" alt="Cisco Security" class="cert-img">
+                <div class="cert-img-wrapper">
+                    <img src="Certificates/network-support-and-security.png" alt="Cisco Endpoint Security" class="cert-img">
+                </div>
                 <div class="cert-info">
-                    <h4>Cisco Academy</h4>
-                    <p style="margin-bottom: 1rem;">Network Support & Security</p>
-                    <a href="Certificates/NetworkSupportandSecurityUpdate20251125-30-kp3j29.pdf" target="_blank" class="view-btn">View Certificate</a>
+                    <div>
+                        <h4>Cisco Endpoint Security</h4>
+                        <p>Cisco Networking Academy &bull; Feb 2026</p>
+                    </div>
+                    <a href="Certificates/Cisco_Endpoint_Security.pdf" target="_blank" class="view-btn">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Certificate
+                    </a>
                 </div>
             </div>
-            <div class="cert-card">
-                <img src="Certificates/NetworkTechnicianCareerPathUpdate20251125-30-by67e7_page-0001.jpg" alt="Network Technician" class="cert-img">
-                <div class="cert-info">
-                    <h4>Cisco Academy</h4>
-                    <p style="margin-bottom: 1rem;">Network Technician Path</p>
-                    <a href="Certificates/NetworkTechnicianCareerPathUpdate20251125-30-by67e7.pdf" target="_blank" class="view-btn">View Certificate</a>
-                </div>
-            </div>
+
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <a href="certificates.html" class="btn btn-secondary">View Inventory</a>
+
+        <div style="text-align: center;">
+            <a href="certificates.html" class="btn btn-secondary" style="padding: 0.9rem 2.4rem;">
+                <i class="fa-solid fa-layer-group"></i> Explore Full Inventory (25+ Certifications)
+            </a>
         </div>
     </section>
 
-    <section id="skills" style="background: rgba(47, 129, 247, 0.03);">
-        <h2>Technical Core (Linked Experience)</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; margin-top: 2rem;">
-            <div>
-                <h4 style="font-family: 'Fira Code', monospace; margin-bottom: 1rem; color: var(--accent);">security --inventory</h4>
-                <ul style="color: var(--text-secondary); display: grid; gap: 0.8rem;">
-                    <li><i class="fa-solid fa-shield-halved"></i> Cybersecurity Analysis &amp; Incident Response</li>
-                    <li><i class="fa-solid fa-server"></i> SIEM/EDR (Wazuh, Sysmon)</li>
-                    <li><i class="fa-solid fa-list-check"></i> NIST CSF, ISO 27001 &amp; MITRE ATT&amp;CK</li>
-                    <li><i class="fa-solid fa-code"></i> Python for Security &amp; Automation</li>
-                </ul>
+    <!-- Technical Arsenal Section -->
+    <section id="skills" style="background: rgba(0, 240, 255, 0.02);">
+        <div class="section-header">
+            <span class="section-tag">// 04. DEFENSIVE ARSENAL</span>
+            <h2>Technical Core &amp; Competencies</h2>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill-category">
+                <div class="skill-category-title"><i class="fa-solid fa-server"></i> SIEM &amp; Telemetry</div>
+                <div class="skill-list">
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Wazuh SIEM (Manager &amp; Agent)</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Microsoft Sysmon XML Profiling</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Splunk &amp; Elastic Stack</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Microsoft Sentinel &amp; TheHive</div>
+                </div>
             </div>
-            <div>
-                <h4 style="font-family: 'Fira Code', monospace; margin-bottom: 1rem; color: var(--accent);">networking --core</h4>
-                <ul style="color: var(--text-secondary); display: grid; gap: 0.8rem;">
-                    <li><i class="fa-solid fa-network-wired"></i> Network Support & Security</li>
-                    <li><i class="fa-solid fa-toolbox"></i> Technical Support</li>
-                    <li><i class="fa-solid fa-diagram-project"></i> TCP/IP & OSI Architecture</li>
-                    <li><i class="fa-solid fa-database"></i> MySQL Database Management</li>
-                </ul>
+
+            <div class="skill-category">
+                <div class="skill-category-title"><i class="fa-solid fa-shield-halved"></i> Standards &amp; Frameworks</div>
+                <div class="skill-list">
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> NIST Cybersecurity Framework (CSF)</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> ISO 27001 Baseline Security Controls</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> MITRE ATT&amp;CK Mapping</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> CIS Benchmarks (SCA Compliance)</div>
+                </div>
             </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title"><i class="fa-solid fa-network-wired"></i> Network Defense</div>
+                <div class="skill-list">
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Wireshark Packet Inspection</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Suricata IDS &amp; Port Monitoring</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> TCP/IP, DNS, DHCP, NAT &amp; Subnetting</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Cisco Packet Tracer Topologies</div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <div class="skill-category-title"><i class="fa-solid fa-terminal"></i> Scripting &amp; Systems</div>
+                <div class="skill-list">
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Python for Security Scripting</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Bash Shell &amp; PowerShell</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> Linux (Ubuntu Server &amp; Kali)</div>
+                    <div class="skill-item"><i class="fa-solid fa-check"></i> MySQL Relational Database Design</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact">
-        <h2 style="text-align: center;">Let's Connect</h2>
-        <div style="max-width: 800px; margin: 0 auto; background: var(--card-bg); padding: 3rem; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
-            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">Available for Networking, SOC opportunities, and Professional Collaboration.</p>
-            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
-                <a href="mailto:oluwafemibenjamin488@gmail.com" class="btn btn-primary"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                <a href="https://linkedin.com/in/opeyemi-benjamin-99ba70250" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/OpeyemiAB" target="_blank" class="btn btn-secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+        <div class="contact-box">
+            <span class="section-tag">// 05. LET'S CONNECT</span>
+            <h2 style="margin: 0.5rem 0 1rem;">Ready to Collaborate?</h2>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
+                Currently seeking SOC Analyst, Blue Team internship, or Detection Engineering opportunities. Let's discuss how I can contribute to your security operations.
+            </p>
+
+            <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.2rem;">
+                <a href="mailto:oluwafemibenjamin488@gmail.com" class="btn btn-primary">
+                    <i class="fa-solid fa-envelope"></i> Send Email
+                </a>
+                <a href="https://linkedin.com/in/opeyemi-benjamin-99ba70250" target="_blank" class="btn btn-secondary">
+                    <i class="fa-brands fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/OpeyemiAB" target="_blank" class="btn btn-secondary">
+                    <i class="fa-brands fa-github"></i> GitHub
+                </a>
+                <a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="btn btn-secondary">
+                    <i class="fa-solid fa-file-pdf"></i> Resume
+                </a>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Opeyemi Benjamin. Computer Science @ LASU | SIWES @ LASUED</p>
+        <p>&copy; 2026 Benjamin Opeyemi Abraham. Computer Science @ LASU &bull; Millennium Fellow (Class of 2026) MCN &amp; UNAI</p>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            const icon = document.getElementById('menuIcon');
+            nav.classList.toggle('open');
+            if (nav.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        function closeMenu() {
+            const nav = document.getElementById('navLinks');
+            const icon = document.getElementById('menuIcon');
+            if (nav) nav.classList.remove('open');
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+    </script>
 </body>
 </html>

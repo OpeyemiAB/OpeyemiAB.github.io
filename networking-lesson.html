@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Networking Foundations Lab | Benjamin Opeyemi Abraham</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .note-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            line-height: 1.7;
+        }
+        .note-card h2 {
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem;
+            color: #00F0FF;
+        }
+        .note-card h3 {
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem;
+            color: var(--text-primary);
+        }
+        .note-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .note-table th, .note-table td {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        .note-table th {
+            background: rgba(47, 129, 247, 0.1);
+            color: #00F0FF;
+        }
+        .thought-box {
+            background: rgba(0, 240, 255, 0.05);
+            border-left: 4px solid #00F0FF;
+            padding: 1.2rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div style="padding: 1.5rem 10%;">
+        <a href="index.html" class="view-btn" style="padding: 0.5rem 1.2rem;">
+            <i class="fa-solid fa-arrow-left"></i> Back to Portfolio
+        </a>
+    </div>
+
+    <section style="padding-top: 10px; max-width: 950px; margin: 0 auto;">
+        <span class="project-tag">NETWORK ARCHITECTURE &amp; TELEMETRY</span>
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Networking for SOC Analysts: Lesson 1</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+            Practical notes bridging OSI/TCP-IP fundamentals directly to SIEM alert triage and packet investigation.
+        </p>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+            <a href="Networking-Lessons/Lesson_1.md" download class="btn btn-primary" style="font-size: 0.9rem; padding: 0.6rem 1.4rem;">
+                <i class="fa-solid fa-download"></i> Download Lesson_1.md
+            </a>
+            <a href="index.html#projects" class="btn btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.4rem;">
+                <i class="fa-solid fa-grid-2"></i> All Projects
+            </a>
+        </div>
+
+        <div class="note-card">
+            <h2>The OSI Model &amp; TCP/IP in Live SOC Defense</h2>
+            <p>
+                As a SOC Analyst, you don't just "know" the OSI model; you live in it. Every alert in Wazuh, Splunk, or any enterprise SIEM is tied directly to these protocol layers.
+            </p>
+
+            <h3>1. The Core Focus (The "Security Triad": Layers 2, 3, and 4)</h3>
+            <p>While theoretical networking outlines 7 layers, 90% of telemetry and intrusion alerts originate within layers 2 through 4:</p>
+
+            <table class="note-table">
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Name</th>
+                        <th>Data Unit</th>
+                        <th>Security Relevance &amp; Detection Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>Layer 4</b></td>
+                        <td>Transport</td>
+                        <td>Segments</td>
+                        <td>Ports (TCP/UDP). Is someone probing port 445 (SMB), 3389 (RDP), or 22 (SSH)?</td>
+                    </tr>
+                    <tr>
+                        <td><b>Layer 3</b></td>
+                        <td>Network</td>
+                        <td>Packets</td>
+                        <td>IP Addresses. Is inbound traffic routing from a known malicious C2 or TOR exit node?</td>
+                    </tr>
+                    <tr>
+                        <td><b>Layer 2</b></td>
+                        <td>Data Link</td>
+                        <td>Frames</td>
+                        <td>MAC Addresses. Is an attacker performing ARP spoofing or MITM attacks on the LAN?</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. Application in the Wazuh SOC Lab</h3>
+            <p>In our Wazuh active response lab, when a Hydra brute-force alert was generated, the telemetry ingested by the manager parsed:</p>
+            <ul>
+                <li><code>src_ip</code>: <code>192.168.1.50</code> (Layer 3 &ndash; Network Packet)</li>
+                <li><code>dst_port</code>: <code>445</code> (Layer 4 &ndash; Transport Segment)</li>
+                <li><code>protocol</code>: <code>TCP</code> (Layer 4 &ndash; Connection-Oriented)</li>
+            </ul>
+
+            <div class="thought-box">
+                <b>The Analyst's Mental Model:</b><br>
+                "I observe Layer 3 packets from host <code>192.168.1.50</code> initiating SYN sequences against Layer 4 destination port <code>445</code> via TCP. Correlating with rapid authentication failures confirms an automated SMB dictionary attack."
+            </div>
+
+            <h3>3. OSI (Theory) vs. TCP/IP (Operational Reality)</h3>
+            <table class="note-table">
+                <thead>
+                    <tr>
+                        <th>OSI (Theoretical)</th>
+                        <th>TCP/IP (Real-World)</th>
+                        <th>Protocols in Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Layers 5, 6, 7</td>
+                        <td><b>Application</b></td>
+                        <td>HTTP/S, DNS, SMTP, SSH, TLS</td>
+                    </tr>
+                    <tr>
+                        <td>Layer 4</td>
+                        <td><b>Transport</b></td>
+                        <td>TCP (Three-Way Handshake), UDP</td>
+                    </tr>
+                    <tr>
+                        <td>Layer 3</td>
+                        <td><b>Internet</b></td>
+                        <td>IPv4, IPv6, ICMP, ARP</td>
+                    </tr>
+                    <tr>
+                        <td>Layers 1, 2</td>
+                        <td><b>Network Access</b></td>
+                        <td>Ethernet (802.3), Wi-Fi (802.11)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>?? Practical Defense Takeaway</h3>
+            <p>
+                When tuning firewall rules or Sysmon filters, understanding Layer 4 boundary controls prevents agent disconnects. For example, Wazuh agents report to the manager via TCP port <code>1514</code> (data telemetry) and <code>1515</code> (enrollment). Blocking Layer 4 halts all Layer 7 dashboard communications.
+            </p>
+        </div>
+    </section>
+
+    <footer style="margin-top: 5rem; padding: 3rem 10%; border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+        <p>&copy; 2026 Benjamin Opeyemi Abraham. Computer Science @ LASU</p>
+    </footer>
+</body>
+</html>
