@@ -14,28 +14,30 @@
 
     <!-- Navigation -->
     <nav>
-        <div class="logo-container">
-            <svg class="logo-shield" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M 32 10 L 48 16 C 48 32 40 46 32 54 C 24 46 16 32 16 16 Z" stroke="#00F0FF" stroke-width="3" fill="rgba(0, 240, 255, 0.1)"/>
-                <circle cx="32" cy="28" r="4" fill="#00F0FF"/>
-                <path d="M 32 32 L 32 38" stroke="#00F0FF" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <div class="logo-text">BENJAMIN<span>.OPEYEMI</span></div>
+        <div class="nav-container">
+            <div class="logo-container">
+                <svg class="logo-shield" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 32 10 L 48 16 C 48 32 40 46 32 54 C 24 46 16 32 16 16 Z" stroke="#00F0FF" stroke-width="3" fill="rgba(0, 240, 255, 0.1)"/>
+                    <circle cx="32" cy="28" r="4" fill="#00F0FF"/>
+                    <path d="M 32 32 L 32 38" stroke="#00F0FF" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div class="logo-text">BENJAMIN<span>.OPEYEMI</span></div>
+            </div>
+
+            <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars" id="menuIcon"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#about" onclick="closeMenu()">About</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+                <li><a href="#certificates" onclick="closeMenu()">Certifications</a></li>
+                <li><a href="#skills" onclick="closeMenu()">Arsenal</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+                <li><a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="nav-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a></li>
+            </ul>
         </div>
-
-        <button class="mobile-menu-btn" onclick="toggleMenu()" aria-label="Toggle navigation">
-            <i class="fa-solid fa-bars" id="menuIcon"></i>
-        </button>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" onclick="closeMenu()">Home</a></li>
-            <li><a href="#about" onclick="closeMenu()">About</a></li>
-            <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-            <li><a href="#certificates" onclick="closeMenu()">Certifications</a></li>
-            <li><a href="#skills" onclick="closeMenu()">Arsenal</a></li>
-            <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-            <li><a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="nav-btn"><i class="fa-solid fa-file-pdf"></i> Resume</a></li>
-        </ul>
     </nav>
 
     <!-- Hero Section -->
@@ -45,12 +47,12 @@
             Available for SOC Analyst &amp; Blue Team Roles
         </div>
 
-        <h1>Defending Systems from the <span class="highlight">Packet Level Up.</span></h1>
+        <h1>I architect proactive threat detections and <span class="highlight">defend enterprise systems</span> from the packet level up.</h1>
 
         <p>
             Computer Science undergraduate at <strong>Lagos State University (LASU)</strong> &amp; 
             <strong>Millennium Fellow (Class of 2026)</strong> convened by <strong>MCN &amp; UNAI</strong>. 
-            Hands-on expertise in <strong>Wazuh SIEM</strong>, <strong>Sysmon telemetry</strong>, <strong>automated active defense</strong>, and <strong>NIST CSF &amp; ISO 27001 risk evaluation</strong>.
+            Hands-on experience in <strong>Wazuh SIEM</strong>, <strong>Sysmon telemetry</strong>, <strong>automated active defense</strong>, and <strong>NIST CSF &amp; ISO 27001 risk evaluation</strong>.
         </p>
 
         <div class="cta-buttons">
@@ -58,44 +60,25 @@
             <a href="Opeyemi Benjamin Resume.pdf" target="_blank" class="btn btn-secondary"><i class="fa-solid fa-file-pdf"></i> View Resume (PDF)</a>
             <a href="certificates.html" class="btn btn-secondary"><i class="fa-solid fa-certificate"></i> Verified Certs</a>
         </div>
-
-        <div class="hero-metrics">
-            <div class="metric-item">
-                <div class="metric-number">(ISC)&sup2; CC</div>
-                <div class="metric-label">Certified in Cybersecurity</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-number">&lt; 60s</div>
-                <div class="metric-label">Automated Active Defense</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-number">20+</div>
-                <div class="metric-label">Verified Certifications</div>
-            </div>
-            <div class="metric-item">
-                <div class="metric-number">Class of &apos;26</div>
-                <div class="metric-label">Millennium Fellow (UNAI)</div>
-            </div>
-        </div>
     </header>
 
     <!-- About Section -->
     <section id="about">
         <div class="section-header">
-            <span class="section-tag">// 01. BACKGROUND &amp; LEADERSHIP</span>
-            <h2>About Me</h2>
+            <span class="section-tag">ABOUT ME</span>
+            <h2>Background &amp; Leadership</h2>
         </div>
 
         <div class="about-grid">
             <div class="about-text">
                 <p>
-                    I am a dedicated Computer Science student bridging the gap between theoretical computing and the real-world operational velocity of an enterprise Security Operations Center (SOC).
+                    I am a dedicated Computer Science student bridging the gap between theoretical computing and the operational velocity of an enterprise Security Operations Center (SOC).
                 </p>
                 <p>
-                    Honored to be selected as a <strong>Millennium Fellow (Class of 2026)</strong> by the <strong>Millennium Campus Network (MCN)</strong> and the <strong>United Nations Academic Impact (UNAI)</strong>, I lead collegiate initiatives tackling technology access and digital governance principles.
+                    Selected as a <strong>Millennium Fellow (Class of 2026)</strong> by the <strong>Millennium Campus Network (MCN)</strong> and the <strong>United Nations Academic Impact (UNAI)</strong>, I lead student initiatives advancing digital access and ethical governance.
                 </p>
                 <p>
-                    My defensive security background includes investigating live simulated network breaches as a <strong>Cyber Core Associate Intern at Ubuntu Bridge Initiative (UBI) Cohort 01</strong>, mapping risks to <strong>NIST CSF &amp; ISO 27001</strong>, and supporting enterprise IT infrastructure as a <strong>SIWES Intern at LASUED</strong>.
+                    My defensive security background includes investigating simulated network breaches as a <strong>Cyber Core Associate Intern at Ubuntu Bridge Initiative (UBI) Cohort 01</strong>, evaluating organizational risk against <strong>NIST CSF &amp; ISO 27001</strong>, and supporting enterprise IT infrastructure as a <strong>SIWES Intern at LASUED</strong>.
                 </p>
             </div>
 
@@ -138,8 +121,8 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="section-header">
-            <span class="section-tag">// 02. PRACTICAL LABS &amp; SYSTEMS</span>
-            <h2>Featured Projects</h2>
+            <span class="section-tag">FEATURED LABS &amp; SYSTEMS</span>
+            <h2>Cybersecurity Projects</h2>
         </div>
 
         <div class="projects-grid">
@@ -264,8 +247,8 @@
     <!-- Certifications Section -->
     <section id="certificates">
         <div class="section-header">
-            <span class="section-tag">// 03. CREDENTIALS &amp; ACCREDITATIONS</span>
-            <h2>Featured Certifications</h2>
+            <span class="section-tag">VERIFIED CREDENTIALS</span>
+            <h2>Professional Certifications</h2>
         </div>
 
         <div class="cert-gallery">
@@ -346,7 +329,7 @@
     <!-- Technical Arsenal Section -->
     <section id="skills" style="background: rgba(0, 240, 255, 0.02);">
         <div class="section-header">
-            <span class="section-tag">// 04. DEFENSIVE ARSENAL</span>
+            <span class="section-tag">SKILLS &amp; TOOLS</span>
             <h2>Technical Core &amp; Competencies</h2>
         </div>
 
@@ -398,7 +381,7 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="contact-box">
-            <span class="section-tag">// 05. LET'S CONNECT</span>
+            <span class="section-tag">GET IN TOUCH</span>
             <h2 style="margin: 0.5rem 0 1rem;">Ready to Collaborate?</h2>
             <p style="color: var(--text-secondary); font-size: 1.05rem; max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
                 Currently seeking SOC Analyst, Blue Team internship, or Detection Engineering opportunities. Let's discuss how I can contribute to your security operations.
